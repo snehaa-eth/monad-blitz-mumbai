@@ -1,0 +1,8 @@
+name = "predblink-blinks"
+main = "src/index.ts"
+compatibility_date = "2025-02-22"
+
+[vars]
+MONAD_RPC_URL = "https://rpc.ankr.com/monad_testnet"
+
+# Persist the action metadata by setting ACTIONS_CORS_HEADERS in the worker if needed.
