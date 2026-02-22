@@ -1,0 +1,14 @@
+{
+  "network": "monadTestnet",
+  "chainId": 10143,
+  "mockUSDC": "0xa3823ef745DD8Df93222C4dA74665E9Ce515dAeF",
+  "shareToken": "0x4923AB84c1b2043C4215ce446Ccc42ede1854462",
+  "predBlink": "0x3adc0beB3B447878a156BB15E1179267cc225553",
+  "priceOracle": "0x5462539809fc8F822e81f8Da6BA0B71615d9a366",
+  "blockOracle": "0xE2654a34B262aB6399F22a7A75981f2E79DEfbD1",
+  "marketResolver": "0x0000000000000000000000000000000000000000",
+  "protocolWallet": "0xcBe600349CE4cF89842Bc371E4a4062140CDCCcD",
+  "deployer": "0xcBe600349CE4cF89842Bc371E4a4062140CDCCcD",
+  "version": "PredBlink-v2-pyth",
+  "deployedAt": "2026-02-22T11:41:19.869Z"
+}

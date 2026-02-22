@@ -1,0 +1,13 @@
+name = "twitter-proxy"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+# Local development settings
+[vars]
+# TWITTER_API_KEY will be set via secrets for production
+
+# For local development, you can set it here temporarily:
+# TWITTER_API_KEY = "your-key-here"
+
+# Production secrets (set via: wrangler secret put TWITTER_API_KEY)
+# Never commit actual API keys to this file!

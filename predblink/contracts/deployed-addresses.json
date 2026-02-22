@@ -1,0 +1,9 @@
+{
+  "network": "bscTestnet",
+  "chainId": 97,
+  "mockUSDC": "0xb0edAB53b28B4A13B396e66e6892ad553429A49f",
+  "shareToken": "0x56591846d568350705F6238089dA36f8F459A553",
+  "marketFactory": "0xC1F10B760AAD6949f264122749E80b42C76b6b4F",
+  "protocolWallet": "0x7308b1B0Ab147713ADc079c7183be84a933Ee1D1",
+  "deployedAt": "2025-12-20T19:07:16.841Z"
+}

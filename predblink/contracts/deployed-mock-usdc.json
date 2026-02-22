@@ -1,0 +1,5 @@
+{
+  "network": "bscTestnet",
+  "mockUSDC": "0x64142706680e2707e5D23887505c5DD54855a779",
+  "deployer": "0x41F0b6EBC8EA05b76d44AE987B028FEA772fD035"
+}

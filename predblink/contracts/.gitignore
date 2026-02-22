@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Build artifacts
+artifacts/
+cache/
+
+# Environment files (NEVER COMMIT)
+.env
+.env.local
+.env.production
+
+# Private keys
+*.key
+
+# Coverage reports
+coverage/
+coverage.json
+
+# TypeChain generated files
+typechain/
+typechain-types/
+
+# Misc
+.DS_Store
+*.log

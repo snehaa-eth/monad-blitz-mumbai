@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+  <title>PredBlink | Predict the Hype</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'nitro-bg': '#09090b',
+            'nitro-surface': '#111114',
+            'nitro-card': '#16161a',
+            'nitro-border': '#232329',
+            'nitro-purple': '#7259ff',
+            'nitro-violet': '#8570ff',
+            'nitro-indigo': '#6366F1',
+            'nitro-accent': '#A78BFA',
+            'nitro-glow': '#7C3AED',
+            'nitro-text': '#E2E8F0',
+            'nitro-muted': '#64748B',
+            'nitro-green': '#10B981',
+            'nitro-red': '#EF4444',
+          },
+          fontFamily: {
+            'display': ['"Space Grotesk"', 'sans-serif'],
+            'sans': ['"Inter"', 'sans-serif'],
+            'mono': ['"Space Mono"', 'monospace'],
+          },
+          boxShadow: {
+            'glow': '0 0 20px rgba(114, 89, 255, 0.3)',
+            'glow-lg': '0 0 40px rgba(114, 89, 255, 0.25)',
+            'glow-sm': '0 0 10px rgba(114, 89, 255, 0.2)',
+            'card': '0 4px 24px rgba(0, 0, 0, 0.4)',
+            'card-hover': '0 8px 32px rgba(114, 89, 255, 0.2)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      background-color: #09090b;
+      background-image:
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 10px,
+          rgba(255, 255, 255, 0.015) 10px,
+          rgba(255, 255, 255, 0.015) 11px
+        );
+      color: #E2E8F0;
+      font-family: 'Space Mono', monospace;
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #111114; }
+    ::-webkit-scrollbar-thumb { background: #7C3AED; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #8B5CF6; }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    .marquee-container { overflow: hidden; white-space: nowrap; }
+    .marquee-content { display: inline-block; animation: marquee 20s linear infinite; }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-25%); }
+    }
+
+    .glass {
+      background: rgba(14, 14, 17, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid #232329;
+    }
+
+    .glass-card {
+      background: #111114;
+      border: 1px solid #2a2a30;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .glass-card::before,
+    .glass-card::after,
+    .glass-card > .corner-bl,
+    .glass-card > .corner-br {
+      content: '';
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #3a3a42;
+      z-index: 2;
+    }
+    .glass-card::before { top: -3px; left: -3px; }
+    .glass-card::after { top: -3px; right: -3px; }
+
+    .glass-card:hover {
+      border-color: rgba(114, 89, 255, 0.35);
+      box-shadow: 0 4px 24px rgba(114, 89, 255, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .gradient-purple {
+      background: linear-gradient(135deg, #7C3AED, #6366F1);
+    }
+
+    .gradient-purple-glow {
+      background: linear-gradient(135deg, #7C3AED, #8B5CF6);
+      box-shadow: 0 0 20px rgba(114, 89, 255, 0.4);
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, #A78BFA, #8B5CF6, #7C3AED);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .bg-glow-purple {
+      position: relative;
+    }
+    .bg-glow-purple::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60%;
+      height: 60%;
+      background: radial-gradient(ellipse, rgba(114, 89, 255, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes float-glow {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+      50% { transform: translate(10px, -10px) scale(1.05); opacity: 0.8; }
+    }
+
+    .ambient-shape {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      animation: float-glow 12s ease-in-out infinite;
+    }
+
+    @keyframes bounce-in {
+      0% { transform: scale(0); opacity: 0; }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .animate-bounce-in { animation: bounce-in 0.4s ease-out forwards; }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 8px rgba(114, 89, 255, 0.2); }
+      50% { box-shadow: 0 0 20px rgba(114, 89, 255, 0.4); }
+    }
+    .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+
+    /* Degen mode - neon variant */
+    .degen-mode {
+      background-color: #08070e !important;
+      background-image: radial-gradient(rgba(139, 92, 246, 0.06) 1px, transparent 1px) !important;
+    }
+    .degen-mode .glass-card {
+      border-color: rgba(139, 92, 246, 0.2) !important;
+      box-shadow: 0 0 24px rgba(139, 92, 246, 0.1) !important;
+    }
+
+    .scanline { display: none; }
+    .degen-mode .scanline {
+      display: block;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(to bottom, rgba(18,16,16,0) 50%, rgba(139,92,246,0.03) 50%);
+      background-size: 100% 4px; z-index: 9999; pointer-events: none;
+    }
+
+    .degen-bg-shapes { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+    .degen-mode .degen-bg-shapes { display: block; }
+    .shape { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.2; animation: float-glow 12s ease-in-out infinite; }
+    .shape-1 { top: 10%; left: 5%; width: 400px; height: 400px; background: #7C3AED; }
+    .shape-2 { top: 40%; right: -5%; width: 500px; height: 500px; background: #6366F1; animation-delay: -3s; }
+    .shape-3 { bottom: 5%; left: 20%; width: 350px; height: 350px; background: #8B5CF6; animation-delay: -6s; }
+    .shape-4 { top: -10%; right: 20%; width: 300px; height: 300px; background: #A78BFA; animation-delay: -9s; }
+  </style>
+  <!-- Vite handles module resolution from node_modules -->
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>

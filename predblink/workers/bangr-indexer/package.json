@@ -1,0 +1,20 @@
+{
+    "name": "PredBlink-indexer",
+    "version": "1.0.0",
+    "description": "Cloudflare Worker to index blockchain events for fast queries",
+    "scripts": {
+        "dev": "wrangler dev",
+        "deploy": "wrangler deploy",
+        "tail": "wrangler tail",
+        "db:create": "wrangler d1 create PredBlink-events",
+        "db:migrate": "wrangler d1 execute PredBlink-events --local --file=./schema.sql"
+    },
+    "devDependencies": {
+        "@cloudflare/workers-types": "^4.20231218.0",
+        "typescript": "^5.3.3",
+        "wrangler": "^3.22.1"
+    },
+    "dependencies": {
+        "viem": "^2.0.0"
+    }
+}
